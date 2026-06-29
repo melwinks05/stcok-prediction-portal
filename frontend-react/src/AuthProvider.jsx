@@ -1,0 +1,18 @@
+import {useState, useContext, createContext } from 'react'
+
+const AuthContext=createContext()
+ 
+const AuthProvider = ({children}) => {
+  const [isLoggedin, setIsLoggedIn]=useState()
+  !!localStorage.getItem('accessToken')
+  return (
+    <>
+      <AuthContext.Provider value={{isLoggedin, setIsLoggedIn}}>
+        {children}
+      </AuthContext.Provider>
+    </>
+  )
+}
+
+export default AuthProvider
+export {AuthContext}
